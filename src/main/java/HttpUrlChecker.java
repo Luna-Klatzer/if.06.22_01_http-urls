@@ -25,9 +25,8 @@ import java.util.regex.Pattern;
  * TO PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
  */
 class HttpUrlChecker {
-
-    public static Matcher getMatcher(String urlString) { // Note: 'http' or 'https' are already only being matched
-        Pattern pattern = Pattern.compile("http(s)?://([A-z]+\\.)?((\\d+)|(\\d*[A-z\\-]+))(\\.[A-z]+)+");
+    public static Matcher getMatcher(String urlString) {
+        Pattern pattern = Pattern.compile("^http(s)?://(([^-.][\\dA-z-]*)|\\d+)(\\.[^-.][A-z-\\d]*)+$");
         return pattern.matcher(urlString);
     }
 }
