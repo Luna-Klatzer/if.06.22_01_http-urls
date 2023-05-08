@@ -27,17 +27,16 @@ import java.util.regex.Matcher;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class HttpUrlCheckerTest {
-
-    @Test
-    public void itShouldMatch_GivenTheShortestUrlPossible() {
-        checkRegex("http://b.com");
-    }
-
     private void checkRegex(final String httpString) {
         var matcher = HttpUrlChecker.getMatcher(httpString);
         assertTrue(matcher.find());
         assertEquals(httpString, matcher.group());
         assertFalse(matcher.find());
+    }
+
+    @Test
+    public void itShouldMatch_GivenTheShortestUrlPossible() {
+        checkRegex("http://b.com");
     }
 
     @Test
@@ -105,6 +104,4 @@ public class HttpUrlCheckerTest {
         var matcher = HttpUrlChecker.getMatcher("http://www.37-.com");
         assertFalse(matcher.find());
     }
-
-
 }
